@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React from 'react';
 
 const PopularCourses = () => {
@@ -73,9 +74,9 @@ const PopularCourses = () => {
                     ))}
                 </div>
                 <div className="text-center mt-12">
-                    <button className="bg-[#A00034] text-white font-semibold px-8 py-3 rounded-full hover:bg-[#8E24AA] transition-colors uppercase cursor-pointer">
+                    <Link href={"/all-courses"} className="bg-[#A00034] text-white font-semibold px-8 py-3 rounded-full hover:bg-[#8E24AA] transition-colors uppercase cursor-pointer">
                         See All
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

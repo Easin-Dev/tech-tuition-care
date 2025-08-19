@@ -203,10 +203,10 @@ const Navbar = () => {
                             {/* মোবাইল ড্রপডাউন */}
                             <div className="w-full text-center">
                                 <a
-                                    href="/departments"
+                                    href="/all_departments"
                                     className="text-white text-xl hover:text-yellow-300 transition-colors uppercase font-medium"
                                 >
-                                    Departments / Subjects
+                                    Departments
                                 </a>
                                 <div className="mt-2 flex flex-col items-center space-y-2">
                                     {departments.map((dept, index) => (
@@ -222,25 +222,25 @@ const Navbar = () => {
                                 </div>
                             </div>
                             <a
-                                href="/courses"
+                                href="/all-courses"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="text-white text-xl hover:text-yellow-300 transition-colors uppercase font-medium"
                             >
                                 Courses
                             </a>
                             <a
-                                href="/about"
+                                href="/about-us"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="text-white text-xl hover:text-yellow-300 transition-colors uppercase font-medium"
                             >
                                 About Us
                             </a>
                             <a
-                                href="/blog"
+                                href="/all-notices"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="text-white text-xl hover:text-yellow-300 transition-colors uppercase font-medium"
                             >
-                                Notices / Blog
+                                Notices
                             </a>
                             <a
                                 href="/contact"
@@ -250,11 +250,11 @@ const Navbar = () => {
                                 Contact
                             </a>
                             <a
-                                href="/faq"
+                                href="/all-faq"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="text-white text-xl hover:text-yellow-300 transition-colors uppercase font-medium"
                             >
-                                FAQ / Help
+                                FAQ 
                             </a>
                         </div>
 
