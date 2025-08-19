@@ -91,7 +91,7 @@ const Navbar = () => {
                     {/* Departments/Subjects এর জন্য ড্রপডাউন */}
                     <div className="relative group">
                         <a
-                            href="/departments"
+                            href="/all_departments"
                             className="text-white hover:text-yellow-300 transition-colors uppercase font-medium"
                         >
                             Departments
@@ -109,19 +109,19 @@ const Navbar = () => {
                         </div>
                     </div>
                     <a
-                        href="/courses"
+                        href="/all-courses"
                         className="text-white hover:text-yellow-300 transition-colors uppercase font-medium"
                     >
                         Courses
                     </a>
                     <a
-                        href="/about"
+                        href="/about-us"
                         className="text-white hover:text-yellow-300 transition-colors uppercase font-medium"
                     >
                         About Us
                     </a>
                     <a
-                        href="/blog"
+                        href="/all-notices"
                         className="text-white hover:text-yellow-300 transition-colors uppercase font-medium"
                     >
                         Notices
@@ -133,7 +133,7 @@ const Navbar = () => {
                         Contact
                     </a>
                     <a
-                        href="/faq"
+                        href="/all-faq"
                         className="text-white hover:text-yellow-300 transition-colors uppercase font-medium"
                     >
                         FAQ
