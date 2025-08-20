@@ -109,7 +109,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <a
-                        href="/all-courses"
+                        href="/courses"
                         className="text-white hover:text-yellow-300 transition-colors uppercase font-medium"
                     >
                         Courses

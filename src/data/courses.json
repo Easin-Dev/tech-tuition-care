@@ -1,0 +1,88 @@
+{
+    "courses": [
+        {
+            "id": "computer-technology",
+            "name": "Computer Technology",
+            "semesters": [
+                {
+                    "id": "1st-semester",
+                    "name": "1st Semester",
+                    "subjects": [
+                        {
+                            "id": "english",
+                            "name": "English",
+                            "lectures": [
+                                {
+                                    "id": "class-1",
+                                    "title": "Class 1 - Introduction to English",
+                                    "videoUrl": "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+                                },
+                                {
+                                    "id": "class-2",
+                                    "title": "Class 2 - Grammar Basics",
+                                    "videoUrl": "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "mathematics",
+                            "name": "Mathematics",
+                            "lectures": [
+                                {
+                                    "id": "class-1",
+                                    "title": "Class 1 - Algebra Fundamentals",
+                                    "videoUrl": "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "2nd-semester",
+                    "name": "2nd Semester",
+                    "subjects": [
+                        {
+                            "id": "data-structure",
+                            "name": "Data Structure",
+                            "lectures": [
+                                {
+                                    "id": "class-1",
+                                    "title": "Class 1 - Intro to Arrays",
+                                    "videoUrl": "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "electrical-engineering",
+            "name": "Electrical Engineering",
+            "semesters": [
+                {
+                    "id": "1st-semester",
+                    "name": "1st Semester",
+                    "subjects": [
+                        {
+                            "id": "circuits",
+                            "name": "Basic Circuits",
+                            "lectures": [
+                                {
+                                    "id": "class-1",
+                                    "title": "Class 1 - Ohm's Law",
+                                    "videoUrl": "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+                                },
+                                {
+                                    "id": "class-2",
+                                    "title": "Class 2 - Kirchhoff's Law",
+                                    "videoUrl": "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

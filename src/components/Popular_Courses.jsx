@@ -74,7 +74,7 @@ const PopularCourses = () => {
                     ))}
                 </div>
                 <div className="text-center mt-12">
-                    <Link href={"/all-courses"} className="bg-[#A00034] text-white font-semibold px-8 py-3 rounded-full hover:bg-[#8E24AA] transition-colors uppercase cursor-pointer">
+                    <Link href={"/courses"} className="bg-[#A00034] text-white font-semibold px-8 py-3 rounded-full hover:bg-[#8E24AA] transition-colors uppercase cursor-pointer">
                         See All
                     </Link>
                 </div>

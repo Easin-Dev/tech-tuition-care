@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 // এটি একটি একক এবং স্বাধীন Hero Section কম্পোনেন্ট।
@@ -52,9 +53,9 @@ const HeroSection = () => {
                     <h1 className="text-3xl md:text-5xl font-bold mb-4">{heroData.headline}</h1>
                     <p className="text-lg md:text-xl mb-8">{heroData.subheadline}</p>
                     <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <button className="bg-[#A00034] text-white font-semibold px-8 py-3 rounded-full hover:bg-[#8E24AA] transition-colors uppercase cursor-pointer">
+                        <Link href={"/all-courses"} className="bg-[#A00034] text-white font-semibold px-8 py-3 rounded-full hover:bg-[#8E24AA] transition-colors uppercase cursor-pointer">
                             Browse Courses
-                        </button>
+                        </Link>
                         <button className="text-[#A00034] border-2 border-[#A00034] font-semibold px-8 py-3 rounded-full hover:bg-[#A00034] hover:text-white transition-colors uppercase cursor-pointer">
                             Sign Up Free
                         </button>

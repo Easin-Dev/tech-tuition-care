@@ -1,0 +1,246 @@
+{
+    "courses": [
+        {
+            "code": "66711",
+            "title": "Basic Electrical Circuits",
+            "department": "Electrical Engineering",
+            "semester": "1st Semester",
+            "description": "This course covers the fundamental principles of electrical circuits, including Ohm’s Law, Kirchhoff’s Laws, and analysis of series and parallel circuits. It serves as a foundational course for all electrical engineering students.",
+            "modules": [
+                {
+                    "title": "Module 1: Introduction to Circuits",
+                    "content": "History of electricity, basic components, and circuit types."
+                },
+                {
+                    "title": "Module 2: Ohm's and Kirchhoff's Laws",
+                    "content": "Detailed explanation and practical examples of the core laws of electricity."
+                },
+                {
+                    "title": "Module 3: Series and Parallel Circuits",
+                    "content": "Analysis of different circuit configurations and their properties."
+                }
+            ],
+            "image": "https://placehold.co/800x400/2D4CB1/FFFFFF?text=Basic+Circuits"
+        },
+        {
+            "code": "66623",
+            "title": "Programming in C",
+            "department": "Computer Technology",
+            "semester": "2nd Semester",
+            "description": "An introductory course to C programming, focusing on core concepts like data types, control structures, and functions. This course is essential for building a strong foundation in computer science.",
+            "modules": [
+                {
+                    "title": "Module 1: Getting Started with C",
+                    "content": "Introduction to C, compilers, and your first program."
+                },
+                {
+                    "title": "Module 2: Variables and Data Types",
+                    "content": "Understanding different data types and their usage."
+                },
+                {
+                    "title": "Module 3: Control Structures",
+                    "content": "Using if-else, loops, and switch statements to control program flow."
+                }
+            ],
+            "image": "https://placehold.co/800x400/2E7D32/FFFFFF?text=C+Programming"
+        },
+        {
+            "code": "66411",
+            "title": "Engineering Drawing",
+            "department": "Civil Engineering",
+            "semester": "1st Semester",
+            "description": "Learn the principles of technical drawing, including orthographic projection and drafting standards.",
+            "modules": [
+                {
+                    "title": "Module 1: Drawing Instruments",
+                    "content": "Correct usage of drawing tools and instruments."
+                },
+                {
+                    "title": "Module 2: Geometric Constructions",
+                    "content": "Methods for constructing various geometric shapes and figures."
+                },
+                {
+                    "title": "Module 3: Orthographic Projection",
+                    "content": "Principles of representing 3D objects in 2D views."
+                }
+            ],
+            "image": "https://placehold.co/800x400/A00034/FFFFFF?text=Eng+Drawing"
+        },
+        {
+            "code": "66821",
+            "title": "Digital Electronics",
+            "department": "Electronics Engineering",
+            "semester": "2nd Semester",
+            "description": "This course explores the world of digital circuits, logic gates, and Boolean algebra, essential for electronics.",
+            "modules": [
+                {
+                    "title": "Module 1: Logic Gates",
+                    "content": "Introduction to basic logic gates (AND, OR, NOT) and their truth tables."
+                },
+                {
+                    "title": "Module 2: Boolean Algebra",
+                    "content": "Simplifying digital circuits using Boolean algebra theorems."
+                },
+                {
+                    "title": "Module 3: Combinational Logic",
+                    "content": "Designing and analyzing multiplexers, decoders, and encoders."
+                }
+            ],
+            "image": "https://placehold.co/800x400/8E24AA/FFFFFF?text=Digital+Electronics"
+        },
+        {
+            "code": "66921",
+            "title": "Fluid Mechanics",
+            "department": "Mechanical Engineering",
+            "semester": "2nd Semester",
+            "description": "Study the properties and behavior of fluids at rest and in motion, crucial for mechanical engineering applications.",
+            "modules": [
+                {
+                    "title": "Module 1: Fluid Properties",
+                    "content": "Introduction to density, viscosity, and surface tension."
+                },
+                {
+                    "title": "Module 2: Fluid Statics",
+                    "content": "Pressure measurement and forces on submerged surfaces."
+                },
+                {
+                    "title": "Module 3: Fluid Dynamics",
+                    "content": "Principles of fluid flow and Bernoulli's equation."
+                }
+            ],
+            "image": "https://placehold.co/800x400/1B2C59/FFFFFF?text=Fluid+Mechanics"
+        },
+        {
+            "code": "66732",
+            "title": "Power System Analysis",
+            "department": "Electrical Engineering",
+            "semester": "3rd Semester",
+            "description": "A study of power generation, transmission, and distribution systems.",
+            "modules": [
+                {
+                    "title": "Module 1: Generation of Power",
+                    "content": "Types of power plants and energy sources."
+                },
+                {
+                    "title": "Module 2: Transmission Lines",
+                    "content": "Analysis of transmission line parameters and performance."
+                },
+                {
+                    "title": "Module 3: Distribution Systems",
+                    "content": "Types of distribution systems and voltage drop calculations."
+                }
+            ],
+            "image": "https://placehold.co/400x250/1B2C59/FFFFFF?text=Power+System+Analysis"
+        },
+        {
+            "code": "66632",
+            "title": "Web Development Basics",
+            "department": "Computer Technology",
+            "semester": "3rd Semester",
+            "description": "Building modern web applications using HTML, CSS, and JavaScript.",
+            "modules": [
+                {
+                    "title": "Module 1: HTML Fundamentals",
+                    "content": "Structuring web pages with semantic HTML5."
+                },
+                {
+                    "title": "Module 2: CSS Styling",
+                    "content": "Designing responsive layouts with CSS3 and Tailwind."
+                },
+                {
+                    "title": "Module 3: JavaScript Interactivity",
+                    "content": "Adding dynamic behavior to web pages with JavaScript."
+                }
+            ],
+            "image": "https://placehold.co/400x250/2D4CB1/FFFFFF?text=Web+Development"
+        },
+        {
+            "code": "66441",
+            "title": "Construction Management",
+            "department": "Civil Engineering",
+            "semester": "4th Semester",
+            "description": "Planning, scheduling, and managing construction projects from start to finish.",
+            "modules": [
+                {
+                    "title": "Module 1: Project Planning",
+                    "content": "Introduction to project lifecycle and planning tools."
+                },
+                {
+                    "title": "Module 2: Scheduling & Costing",
+                    "content": "Techniques for project scheduling and cost estimation."
+                },
+                {
+                    "title": "Module 3: Quality Control",
+                    "content": "Ensuring quality and safety standards on a construction site."
+                }
+            ],
+            "image": "https://placehold.co/400x250/2E7D32/FFFFFF?text=Construction+Mgmt"
+        },
+        {
+            "code": "66851",
+            "title": "Industrial Electronics",
+            "department": "Electronics Engineering",
+            "semester": "5th Semester",
+            "description": "Control of electrical power using electronic switches and devices.",
+            "modules": [
+                {
+                    "title": "Module 1: Power Diodes",
+                    "content": "Working principles of power diodes and their applications."
+                },
+                {
+                    "title": "Module 2: Thyristors and SCRs",
+                    "content": "Characteristics and use of thyristors and SCRs."
+                },
+                {
+                    "title": "Module 3: Inverters and Converters",
+                    "content": "Design and analysis of power conversion circuits."
+                }
+            ],
+            "image": "https://placehold.co/400x250/A00034/FFFFFF?text=Industrial+Electronics"
+        },
+        {
+            "code": "66952",
+            "title": "Refrigeration & AC",
+            "department": "Mechanical Engineering",
+            "semester": "5th Semester",
+            "description": "Principles and systems of cooling, refrigeration, and climate control technologies.",
+            "modules": [
+                {
+                    "title": "Module 1: Basics of Refrigeration",
+                    "content": "Introduction to refrigeration cycles and components."
+                },
+                {
+                    "title": "Module 2: Air Conditioning Systems",
+                    "content": "Types of AC systems and their design considerations."
+                },
+                {
+                    "title": "Module 3: Heat Pumps",
+                    "content": "Understanding heat pump technology and applications."
+                }
+            ],
+            "image": "https://placehold.co/400x250/8E24AA/FFFFFF?text=Refrigeration"
+        },
+        {
+            "code": "67031",
+            "title": "Urban Planning",
+            "department": "Architecture Technology",
+            "semester": "3rd Semester",
+            "description": "Designing and planning urban spaces for sustainable development and growth.",
+            "modules": [
+                {
+                    "title": "Module 1: Urban Design Principles",
+                    "content": "Key concepts and theories of urban design."
+                },
+                {
+                    "title": "Module 2: Sustainable Cities",
+                    "content": "Methods for creating environmentally friendly urban areas."
+                },
+                {
+                    "title": "Module 3: Zoning and Land Use",
+                    "content": "Understanding regulations and policies related to land use."
+                }
+            ],
+            "image": "https://placehold.co/400x250/1B2C59/FFFFFF?text=Urban+Planning"
+        }
+    ]
+}
