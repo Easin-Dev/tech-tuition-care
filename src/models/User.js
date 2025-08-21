@@ -12,16 +12,19 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: false, // Social logins don't need a password
+        required: true,
     },
     role: {
         type: String,
         enum: ['student', 'teacher', 'admin'],
         default: 'student',
     },
-    provider: {
+    isActive: {
+        type: Boolean,
+        default: false, // User is not active until verified
+    },
+    verificationCode: { // New field to store the OTP
         type: String,
-        default: 'credentials',
     },
 });
 

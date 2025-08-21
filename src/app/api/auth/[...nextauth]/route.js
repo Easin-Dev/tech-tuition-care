@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
-import bcrypt from 'bcryptjs';
 import dbConnect from '../../../../lib/dbConnect';
 import User from '../../../../models/User';
 
@@ -11,30 +10,31 @@ export const authOptions = {
         strategy: "jwt",
     },
     providers: [
+        // এটি OTP ভেরিফিকেশনের পরে সেশন তৈরি করবে।
         CredentialsProvider({
-            name: "Credentials",
+            id: 'otp-verification',
+            name: 'OTP Verification',
             credentials: {
                 email: { label: "Email", type: "email" },
-                password: { label: "Password", type: "password" },
+                code: { label: "Verification Code", type: "text" },
             },
-            async authorize(credentials) {
+            authorize: async (credentials) => {
                 await dbConnect();
-                const user = await User.findOne({ email: credentials.email });
-                if (!user || !user.password) {
-                    throw new Error("No user found with this email or invalid provider.");
+                const user = await User.findOne({
+                    email: credentials.email,
+                    verificationCode: credentials.code,
+                });
+
+                if (user) {
+                    // OTP সঠিক হলে, ব্যবহারকারীর সেশন তৈরি হবে।
+                    return {
+                        id: user.id,
+                        email: user.email,
+                        name: user.name,
+                        role: user.role,
+                    };
                 }
-                const isPasswordValid = await bcrypt.compare(credentials.password, user.password);
-                if (!isPasswordValid) {
-                    throw new Error("Invalid password.");
-                }
-                // Return user object, NextAuth handles JWT creation
-                return {
-                    id: user.id,
-                    email: user.email,
-                    name: user.name,
-                    role: user.role,
-                    provider: user.provider
-                };
+                return null;
             },
         }),
         GoogleProvider({
@@ -54,8 +54,8 @@ export const authOptions = {
             if (user) {
                 token.id = user.id;
                 token.email = user.email;
+                token.name = user.name;
                 token.role = user.role;
-                token.provider = user.provider;
             }
             return token;
         },
@@ -63,8 +63,8 @@ export const authOptions = {
             if (token) {
                 session.user.id = token.id;
                 session.user.email = token.email;
+                session.user.name = token.name;
                 session.user.role = token.role;
-                session.user.provider = token.provider;
             }
             return session;
         },
@@ -78,8 +78,9 @@ export const authOptions = {
                     await User.create({
                         email: user.email,
                         name: user.name,
+                        isActive: true,
                         provider: account?.provider,
-                        role: 'student', // Default role for social logins
+                        role: 'student',
                     });
                 }
             }

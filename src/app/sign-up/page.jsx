@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 
@@ -10,61 +11,33 @@ const SignUpPage = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [emailError, setEmailError] = useState(null);
-    const [alertMessage, setAlertMessage] = useState(null);
-    const [isSuccess, setIsSuccess] = useState(false);
-
-    // ইমেল ভ্যালিডেশন ফাংশন
-    const validateEmail = (email) => {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(String(email).toLowerCase());
-    };
+    const [showModal, setShowModal] = useState(false); // New state for modal visibility
+    const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
-        setEmailError(null);
-        setAlertMessage(null);
-
-        // ইমেল ভ্যালিডেশন চেক
-        if (!validateEmail(email)) {
-            setEmailError('Please enter a valid email address.');
-            return;
-        }
-
         setIsLoading(true);
+        setShowModal(false); // Ensure modal is hidden on new submission
 
-        try {
-            const response = await fetch('/api/signup', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, password }),
-            });
+        const response = await fetch('/api/auth/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password }),
+        });
 
-            const data = await response.json();
-            if (response.ok) {
-                await signIn('credentials', {
-                    email,
-                    password,
-                    redirect: false,
-                });
-                setAlertMessage('Signup successful! Redirecting to homepage...');
-                setIsSuccess(true);
-                setTimeout(() => {
-                    window.location.href = '/';
-                }, 2000);
-            } else {
-                setError(data.message || 'Signup failed');
-                setAlertMessage(data.message || 'Signup failed');
-                setIsSuccess(false);
-            }
-        } catch (err) {
-            setError('An unexpected error occurred.');
-            setAlertMessage('An unexpected error occurred.');
-            setIsSuccess(false);
-        } finally {
-            setIsLoading(false);
+        const data = await response.json();
+
+        // Check for 409 status code from the API
+        if (response.status === 409) {
+            setError(data.message || 'User already exists. Please login.');
+            setShowModal(true); // Show the pop-up modal
+        } else if (response.ok) {
+            router.push(`/verify-otp?email=${email}`);
+        } else {
+            setError(data.message || 'Signup failed');
         }
+        setIsLoading(false);
     };
 
     return (
@@ -80,20 +53,19 @@ const SignUpPage = () => {
                     </div>
 
                     <div className="mt-8 space-y-4">
-                        <button onClick={() => signIn('google')} disabled={isLoading} className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2D4CB1] transition-colors cursor-pointer disabled:cursor-not-allowed">Sign Up with Google</button>
-                        <button onClick={() => signIn('facebook')} disabled={isLoading} className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md text-sm font-medium text-white bg-[#3B5998] hover:bg-[#324B83] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2D4CB1] transition-colors cursor-pointer disabled:cursor-not-allowed">Sign Up with Facebook</button>
+                        <button onClick={() => signIn('google')} className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2D4CB1] transition-colors cursor-pointer">Sign Up with Google</button>
+                        <button onClick={() => signIn('facebook')} className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md text-sm font-medium text-white bg-[#3B5998] hover:bg-[#324B83] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2D4CB1] transition-colors cursor-pointer">Sign Up with Facebook</button>
                     </div>
 
                     <div className="mt-6 flex items-center justify-between"><div className="w-full border-t border-gray-300" /><div className="px-2 text-sm text-gray-500">Or continue with</div><div className="w-full border-t border-gray-300" /></div>
 
                     <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
-                        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+                        {error && !showModal && <p className="text-red-500 text-sm text-center">{error}</p>}
                         <div className="rounded-md shadow-sm space-y-4">
                             <div><label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label><input id="name" name="name" type="text" autoComplete="name" required value={name} onChange={(e) => setName(e.target.value)} disabled={isLoading} className="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#2D4CB1] focus:border-[#2D4CB1] focus:z-10 sm:text-sm disabled:bg-gray-200" placeholder="Enter your full name" /></div>
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
-                                <input id="email" name="email" type="email" autoComplete="email" required value={email} onChange={(e) => { setEmail(e.target.value); setEmailError(null); }} disabled={isLoading} className="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#2D4CB1] focus:border-[#2D4CB1] focus:z-10 sm:text-sm disabled:bg-gray-200" placeholder="Enter your email" />
-                                {emailError && <p className="mt-1 text-red-500 text-sm">{emailError}</p>}
+                                <input id="email" name="email" type="email" autoComplete="email" required value={email} onChange={(e) => setEmail(e.target.value)} disabled={isLoading} className="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#2D4CB1] focus:border-[#2D4CB1] focus:z-10 sm:text-sm disabled:bg-gray-200" placeholder="Enter your email" />
                             </div>
                             <div><label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label><input id="password" name="password" type="password" autoComplete="new-password" required value={password} onChange={(e) => setPassword(e.target.value)} disabled={isLoading} className="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#2D4CB1] focus:border-[#2D4CB1] focus:z-10 sm:text-sm disabled:bg-gray-200" placeholder="Create a password" /></div>
                         </div>
@@ -117,9 +89,30 @@ const SignUpPage = () => {
                     <div className="mt-6 text-center text-sm text-gray-600">Already have an account?{' '}<Link href="/login" className="font-medium text-[#2D4CB1] hover:text-[#1B2C59] transition-colors">Login here</Link></div>
                 </div>
             </div>
-            {alertMessage && (
-                <div className={`fixed bottom-5 right-5 p-4 rounded-lg shadow-xl text-white ${isSuccess ? 'bg-green-500' : 'bg-red-500'}`}>
-                    {alertMessage}
+
+            {/* The modal pop-up */}
+            {showModal && (
+                <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+                    <div className="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm mx-4">
+                        <h3 className="text-xl font-bold text-[#1B2C59] mb-4">User Already Exists</h3>
+                        <p className="text-gray-700 mb-6">It looks like you already have an account with this email. Please log in to continue.</p>
+                        <div className="flex justify-center space-x-4">
+                            <button
+                                onClick={() => setShowModal(false)}
+                                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors"
+                            >
+                                Cancel
+                            </button>
+                            <Link href="/login" passHref>
+                                <button
+                                    onClick={() => setShowModal(false)}
+                                    className="px-4 py-2 text-sm font-medium text-white bg-[#A00034] rounded-md hover:bg-[#8E24AA] transition-colors"
+                                >
+                                    Go to Login
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>
